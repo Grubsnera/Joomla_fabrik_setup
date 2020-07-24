@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Albert
+README.md
+_external_data/
+_my_modules/func_mysql.py
+history/sql39_jnb1_host-h_net.txt
+log/
