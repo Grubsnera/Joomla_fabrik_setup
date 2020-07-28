@@ -134,3 +134,5 @@ _external_data/
 _my_modules/func_mysql.py
 history/sql39_jnb1_host-h_net.txt
 log/
+sql/fabrik/*.history
+sql/user/*.history
