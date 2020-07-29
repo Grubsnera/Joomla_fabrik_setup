@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: sql39.jnb1.host-h.net
--- Generation Time: Jul 29, 2020 at 10:03 AM
+-- Generation Time: Jul 29, 2020 at 12:08 PM
 -- Server version: 10.1.45-MariaDB-1~stretch
 -- PHP Version: 5.6.40-0+deb8u12
 
@@ -52,7 +52,7 @@ CREATE TABLE `joomla_fabrik_groups` (
 
 INSERT INTO `joomla_fabrik_groups` (`id`, `name`, `css`, `label`, `published`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `is_join`, `private`, `params`) VALUES
 (1, 'Postcodes', '', 'Postcodes', 1, '2020-07-24 15:03:48', 414, 'albertjvr', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', 0, 0, '{\"split_page\":\"0\",\"list_view_and_query\":\"1\",\"access\":\"1\",\"intro\":\"\",\"outro\":\"\",\"repeat_group_button\":0,\"repeat_template\":\"repeatgroup\",\"repeat_max\":\"\",\"repeat_min\":\"\",\"repeat_num_element\":\"\",\"repeat_error_message\":\"\",\"repeat_no_data_message\":\"\",\"repeat_intro\":\"\",\"repeat_add_access\":\"1\",\"repeat_delete_access\":\"1\",\"repeat_delete_access_user\":\"\",\"repeat_copy_element_values\":\"0\",\"group_columns\":\"1\",\"group_column_widths\":\"\",\"repeat_group_show_first\":1,\"random\":\"0\",\"labels_above\":\"-1\",\"labels_above_details\":\"-1\"}'),
-(3, 'Assignment Categories', '', 'Assignment Categories', 1, '2020-07-29 05:57:38', 414, 'albert', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', 0, 0, '{\"split_page\":\"0\",\"list_view_and_query\":\"1\",\"access\":\"1\",\"intro\":\"\",\"outro\":\"\",\"repeat_group_button\":0,\"repeat_template\":\"repeatgroup\",\"repeat_max\":\"\",\"repeat_min\":\"\",\"repeat_num_element\":\"\",\"repeat_error_message\":\"\",\"repeat_no_data_message\":\"\",\"repeat_intro\":\"\",\"repeat_add_access\":\"1\",\"repeat_delete_access\":\"1\",\"repeat_delete_access_user\":\"\",\"repeat_copy_element_values\":\"0\",\"group_columns\":\"1\",\"group_column_widths\":\"\",\"repeat_group_show_first\":1,\"random\":\"0\",\"labels_above\":\"-1\",\"labels_above_details\":\"-1\"}');
+(2, 'Assignment category 2.00', '', 'Add/Edit Assignment category 2.00', 1, '2020-07-29 11:58:37', 414, 'Python', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', 0, 0, '{\"split_page\":\"0\",\"list_view_and_query\":\"1\",\"access\":\"1\",\"intro\":\"\",\"outro\":\"\",\"repeat_group_button\":\"0\",\"repeat_template\":\"repeatgroup\",\"repeat_max\":\"\",\"repeat_min\":\"\",\"repeat_num_element\":\"\",\"repeat_error_message\":\"\",\"repeat_no_data_message\":\"\",\"repeat_intro\":\"\",\"repeat_add_access\":\"1\",\"repeat_delete_access\":\"1\",\"repeat_delete_access_user\":\"\",\"repeat_copy_element_values\":\"0\",\"group_columns\":\"1\",\"group_column_widths\":\"\",\"repeat_group_show_first\":\"1\",\"random\":\"0\",\"labels_above\":\"-1\",\"labels_above_details\":\"-1\"}');
 
 --
 -- Indexes for dumped tables
@@ -73,7 +73,7 @@ ALTER TABLE `joomla_fabrik_groups`
 -- AUTO_INCREMENT for table `joomla_fabrik_groups`
 --
 ALTER TABLE `joomla_fabrik_groups`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
