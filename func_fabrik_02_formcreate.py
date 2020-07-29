@@ -4,7 +4,7 @@ Copyright (C) AB Janse van Rensburg 20190310
 """
 
 
-def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
+def fabrik_form_create(b_input: bool = False, s_form: str = 'New FORM to setup'):
     
     # IMPORT SYSTEM MODULES
     
@@ -34,8 +34,8 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
         print("ENVIRONMENT")
 
     # DECLARE VARIABLES
-    s_db: str = func_configure.s_joomla_database
-    s_tb: str = func_configure.s_joomla_prefix + "_fabrik_forms"
+    s_database: str = func_configure.s_joomla_database
+    s_table: str = func_configure.s_joomla_prefix + "_fabrik_forms"
     s_created_by: str = func_configure.s_user_id
     i_return: int = 0
 
@@ -47,30 +47,29 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
         print("INPUT")
 
     # Input the joomla mysql fabrik DATABASE name
-    s_dbi = s_db
+    s_database_input = s_database
     if b_input:
         print("")
-        print("Default fabrik database: "+s_db)
-        s_dbi = input("Fabrik DATABASE name? ")
-        if s_dbi == "":
-            s_dbi = s_db
+        print("Default fabrik database: "+s_database)
+        s_database_input = input("Fabrik DATABASE name? ")
+        if s_database_input == "":
+            s_database_input = s_database
 
     # Input the joomla mysql fabrik TABLE name
-    s_tbi = s_tb
+    s_table_input = s_table
     if b_input:
         print("")
-        print("Default fabrik table name: "+s_tb)
-        s_tbi = input("Fabrik TABLE name? ")
-        if s_tbi == "":
-            s_tbi = s_tb
+        print("Default fabrik table name: "+s_table)
+        s_table_input = input("Fabrik TABLE name? ")
+        if s_table_input == "":
+            s_table_input = s_table
 
     # Input the joomla mysql fabrik FORM name
-    s_fli = s_fl
     print("")
-    print("Default form label: "+s_fl)
-    s_fli = input("Fabrik FORM label? ")
-    if s_fli == "":
-        s_fli = s_fl
+    print("Default form label: "+s_form)
+    s_form_input = input("Fabrik FORM label? ")
+    if s_form_input == "":
+        s_form_input = s_form
 
     if func_configure.l_debug_project:
         print("INPUT")
@@ -83,10 +82,10 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
         print("OPEN DATABASE")
         
     # Connect to the oracle database
-    mysql_connection = func_mysql.mysql_open(s_dbi)
+    mysql_connection = func_mysql.mysql_open(s_database_input)
     curs = mysql_connection.cursor()
     if func_configure.l_log_project:
-        func_file.write_log("%t OPEN DATABASE: " + s_dbi)
+        func_file.write_log("%t OPEN DATABASE: " + s_database_input)
 
     """*************************************************************************
     INSERT FORM RECORD
@@ -96,7 +95,7 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
         print("INSERT FORM RECORD")
 
     # INSERT FORM RECORD
-    s_sql = "INSERT INTO `" + s_tbi + "` (" + """
+    s_sql = "INSERT INTO `" + s_table_input + "` (" + """
     `label`,
     `record_in_database`,
     `error`,
@@ -120,7 +119,7 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
     """ + ") VALUES (" + """
     '%LABEL%',
     1,
-    'Some parts of your form have not been correctly filled in',
+    'Some parts of your form have not been correctly filled in.',
     '',
     NOW(),
     %CREATED_BY%,
@@ -175,6 +174,7 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
     \"pdf_template\":\"admin\",
     \"pdf_orientation\":\"portrait\",
     \"pdf_size\":\"letter\",
+    \"pdf_include_bootstrap\":\"1\",    
     \"show_title\":\"1\",
     \"print\":\"\",
     \"email\":\"\",
@@ -195,24 +195,24 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
     }'
     """ + ");"
     # print(s_sql) # DEBUG
-    s_sql = s_sql.replace("%LABEL%", s_fli)
+    s_sql = s_sql.replace("%LABEL%", s_form_input)
     s_sql = s_sql.replace("%CREATED_BY%", s_created_by)
     curs.execute(s_sql)
     mysql_connection.commit()
     if func_configure.l_log_project:
-        func_file.write_log("%t INSERT RECORD: " + s_dbi + "." + s_tbi + ":" + s_fli)
+        func_file.write_log("%t INSERT RECORD: " + s_database_input + "." + s_table_input + ":" + s_form_input)
 
     # FORM DEFAULT PARAMETERS
     """
     (
-    38,
-    'TEST List',
     1,
-    'Some parts of your form have not been correctly filled in',
+    'form label',
+    1,
+    'error message',
     '',
-    '2019-03-20 05:14:04',
-    842,
-    'Albertjvr',
+    '0000-00-00 00:00:00',
+    1,
+    'super user',
     '0000-00-00 00:00:00',
     0,
     0,
@@ -263,6 +263,7 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
     \"pdf_template\":\"admin\",
     \"pdf_orientation\":\"portrait\",
     \"pdf_size\":\"letter\",
+    \"pdf_include_bootstrap\":\"1\",
     \"show_title\":\"1\",
     \"print\":\"\",
     \"email\":\"\",
@@ -286,11 +287,11 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
 
     # GET NEWLY CREATED FORM NUMBER
     curs.execute("SELECT " +
-                 s_tbi + ".id, " +
-                 s_tbi + ".label FROM " +
-                 s_tbi + " WHERE " +
-                 s_tbi + ".label = '" +
-                 s_fli + "'")
+                 s_table_input + ".id, " +
+                 s_table_input + ".label FROM " +
+                 s_table_input + " WHERE " +
+                 s_table_input + ".label = '" +
+                 s_form_input + "'")
     for row in curs.fetchall():
         if func_configure.l_debug_project:
             print("Created list " + str(row[0]))
