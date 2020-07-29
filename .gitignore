@@ -132,7 +132,9 @@ dmypy.json
 MANUAL.md
 _external_data/
 _my_modules/func_mysql.py
-history/sql39_jnb1_host-h_net.txt
+history/*.txt
+history/ianwu/*.txt
+history/studmaster/*.txt
 log/
 sql/fabrik/*.history
 sql/user/*.history
