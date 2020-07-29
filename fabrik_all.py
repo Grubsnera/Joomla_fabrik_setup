@@ -14,7 +14,6 @@ import func_fabrik_02_formcreate
 import func_fabrik_03_formgroup
 import func_fabrik_04_listcreate
 
-
 # DECLARE VARIABLES
 l_questions: bool = True
 i_group: int = 0
