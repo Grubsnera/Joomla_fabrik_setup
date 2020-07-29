@@ -72,12 +72,11 @@ def fabrik_group_create(b_input: bool = False, s_lb: str = "New GROUP to setup")
 
     # Input the joomla mysql fabrik GROUP label
     s_lbi = s_lb
-    if b_input:
-        print("")
-        print("Default fabrik group label: " + s_lb)
-        s_lbi = input("Fabrik GROUP label? ")
-        if s_lbi == "":
-            s_lbi = s_lb
+    print("")
+    print("Default fabrik group label: " + s_lb)
+    s_lbi = input("Fabrik GROUP label? ")
+    if s_lbi == "":
+        s_lbi = s_lb
 
     if func_configure.l_debug_project:
         print("")

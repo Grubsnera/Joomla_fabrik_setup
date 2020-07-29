@@ -56,7 +56,7 @@ except Exception as e:
 
 # CALL THE LIST CREATE FUNCTION
 try:
-    i_li = func_fabrik_04_listcreate.fabrik_list_create(l_questions, str(i_form))
+    i_li = func_fabrik_04_listcreate.fabrik_list_create(l_questions, "New LIST to setup", str(i_form))
     print("List: " + str(i_li))
     if func_configure.l_log_project:
         func_file.write_log("%t LIST CREATED: " + str(i_li))

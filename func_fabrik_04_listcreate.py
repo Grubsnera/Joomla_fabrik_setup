@@ -5,10 +5,10 @@ Copyright (C) AB Janse van Rensburg 20200718
 
 
 def fabrik_list_create(b_input: bool = False,
+                       s_label: str = "New LIST to setup",
                        s_form: str = "0",
                        s_target_table: str = "0",
-                       s_key_field: str = "0",
-                       s_label: str = "New LIST to setup"):
+                       s_key_field: str = "0"):
     """
     
     """

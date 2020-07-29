@@ -66,12 +66,11 @@ def fabrik_form_create(b_input: bool = False, s_fl: str = 'New FORM to setup'):
 
     # Input the joomla mysql fabrik FORM name
     s_fli = s_fl
-    if b_input:
-        print("")
-        print("Default form label: "+s_fl)
-        s_fli = input("Fabrik FORM label? ")
-        if s_fli == "":
-            s_fli = s_fl
+    print("")
+    print("Default form label: "+s_fl)
+    s_fli = input("Fabrik FORM label? ")
+    if s_fli == "":
+        s_fli = s_fl
 
     if func_configure.l_debug_project:
         print("INPUT")

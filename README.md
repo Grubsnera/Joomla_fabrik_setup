@@ -1,1 +1,1 @@
-# Joomla_fabrik_setup
+Some scripts to create and populate mysql data tables in joomla.
