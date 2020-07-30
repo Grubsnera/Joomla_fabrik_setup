@@ -137,4 +137,5 @@ history/ianwu/*.txt
 history/studmaster/*.txt
 log/
 sql/fabrik/*.history
+sql/studmaster/*.history
 sql/user/*.history
