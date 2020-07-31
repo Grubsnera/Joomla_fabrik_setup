@@ -1,4 +1,18 @@
-﻿{"split_page":"0",
+﻿33,
+Finding Impact Rating,
+,
+Add/Edit finding impact rating,
+1,
+2018-10-30 03:36,
+842,
+Albertjvr,
+,
+0,
+0,
+,
+0,
+false,
+{"split_page":"0",
 "list_view_and_query":"1",
 "access":"1",
 "intro":"",
@@ -20,3 +34,5 @@
 "random":"0",
 "labels_above":"-1",
 "labels_above_details":"-1"}
+
+
