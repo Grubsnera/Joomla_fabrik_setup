@@ -4,7 +4,13 @@ Copyright (C) AB Janse van Rensburg 20190310
 """
 
 
-def fabrik_form_create(b_input: bool = False, s_form: str = 'New FORM to setup'):
+def fabrik_form_create(b_input: bool = False,
+                       s_form: str = "0") -> int:
+    """
+    :param b_input: bool - Force keyboard input
+    :param s_form: str - Fabrik form label
+    :return: int - Fabrik form id
+    """
     
     # IMPORT SYSTEM MODULES
     
@@ -64,15 +70,14 @@ def fabrik_form_create(b_input: bool = False, s_form: str = 'New FORM to setup')
         if s_table_input == "":
             s_table_input = s_table
 
-    # Input the joomla mysql fabrik FORM name
-    print("")
-    print("Default form label: "+s_form)
-    s_form_input = input("Fabrik FORM label? ")
-    if s_form_input == "":
-        s_form_input = s_form
-
-    if func_configure.l_debug_project:
-        print("INPUT")
+    # INPUT THE JOOMLA MYSQL FABRIK LIST LABEL
+    s_form_input = s_form
+    if b_input or s_form_input == "0":
+        print("")
+        print("Default fabrik list form: " + s_form)
+        while s_form_input == "" or s_form_input == "0":
+            s_form_input = input("Fabrik FORM label? ")
+        print("")
 
     """*************************************************************************
     OPEN DATABASE

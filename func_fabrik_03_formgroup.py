@@ -74,9 +74,6 @@ def fabrik_form_group(b_input: bool = False, s_group: str = "0", s_form: str = "
         while s_form_input == "" or s_form_input == "0":
             s_form_input = input("Fabrik FORM number? ")
 
-    if func_configure.l_debug_project:
-        print("INPUT")
-
     """*************************************************************************
     OPEN DATABASE
     *************************************************************************"""

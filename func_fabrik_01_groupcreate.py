@@ -4,12 +4,12 @@ Copyright (C) AB Janse van Rensburg 20200716
 """
 
 
-def fabrik_group_create(b_input: bool = False, s_label: str = "New GROUP to setup"):
+def fabrik_group_create(b_input: bool = False,
+                        s_label: str = "0") -> int:
     """
-    Create Joomla Fabrik group record
-    :param b_input: Input database parameters if True (Default=False)
-    :param s_label: Fabrik group label (Default=New GROUP to setup)
-    :return: int
+    :param b_input: bool - Force keyboard input
+    :param s_label: str - Fabrik group label
+    :return: int - Fabrik group id number
     """
 
     # IMPORT SYSTEM MODULES
@@ -70,13 +70,13 @@ def fabrik_group_create(b_input: bool = False, s_label: str = "New GROUP to setu
         if s_table_input == "":
             s_table_input = s_table
 
-    # Input the joomla mysql fabrik GROUP label
-    print("")
-    print("Default fabrik group label: " + s_label)
-    s_label_input = input("Fabrik GROUP label? ")
-    if s_label_input == "":
-        s_label_input = s_label
-    if func_configure.l_debug_project:
+    # INPUT THE JOOMLA MYSQL FABRIK LIST LABEL
+    s_label_input = s_label
+    if b_input or s_label_input == "0":
+        print("")
+        print("Default fabrik group label: " + s_label)
+        while s_label_input == "" or s_label_input == "0":
+            s_label_input = input("Fabrik GROUP label? ")
         print("")
 
     """*************************************************************************
