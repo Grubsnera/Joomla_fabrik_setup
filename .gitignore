@@ -132,7 +132,6 @@ dmypy.json
 MANUAL.md
 _external_data/
 _my_modules/func_mysql.py
-history/*.txt
 history/ianwu/*.txt
 history/studmaster/*.txt
 log/
