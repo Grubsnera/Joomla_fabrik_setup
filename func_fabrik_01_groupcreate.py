@@ -118,7 +118,7 @@ def fabrik_group_create(b_input: bool = False,
     """ + ") VALUES (" + """
     '%LABEL%',
     '',
-    'Add/Edit %LABEL%',
+    'View/Add/Edit %LABEL%',
     1,
     NOW(),
     %CREATED_BY%,
@@ -129,31 +129,7 @@ def fabrik_group_create(b_input: bool = False,
     '0000-00-00 00:00:00',
     0,
     0,
-    '{
-    \"split_page\":\"0\",
-    \"list_view_and_query\":\"1\",
-    \"access\":\"1\",
-    \"intro\":\"\",
-    \"outro\":\"\",
-    \"repeat_group_button\":\"0\",
-    \"repeat_template\":\"repeatgroup\",
-    \"repeat_max\":\"\",
-    \"repeat_min\":\"\",
-    \"repeat_num_element\":\"\",
-    \"repeat_error_message\":\"\",
-    \"repeat_no_data_message\":\"\",
-    \"repeat_intro\":\"\",
-    \"repeat_add_access\":\"1\",
-    \"repeat_delete_access\":\"1\",
-    \"repeat_delete_access_user\":\"\",
-    \"repeat_copy_element_values\":\"0\",
-    \"group_columns\":\"1\",
-    \"group_column_widths\":\"\",
-    \"repeat_group_show_first\":\"1\",
-    \"random\":\"0\",
-    \"labels_above\":\"-1\",
-    \"labels_above_details\":\"-1\"
-    }'
+    ''
     """ + ");"
     # print(s_sql)  # DEBUG
     s_sql = s_sql.replace("%LABEL%", s_label_input)
@@ -162,51 +138,6 @@ def fabrik_group_create(b_input: bool = False,
     mysql_connection.commit()
     if func_configure.l_log_project:
         func_file.write_log("%t INSERT RECORD: " + s_database_input + "." + s_table_input + ": " + s_label_input)
-
-    # GROUP DEFAULT PARAMETERS
-    """
-    (
-    1, 
-    'group name',
-    '',
-    'group label',
-    1,
-    '0000-00-00 00:00:00',
-    1,
-    'super user',
-    '0000-00-00 00:00:00',
-    0,
-    0,
-    '0000-00-00 00:00:00',
-    0,
-    0,
-    '{
-    \"split_page\":\"0\",
-    \"list_view_and_query\":\"1\",
-    \"access\":\"1\",
-    \"intro\":\"\",
-    \"outro\":\"\",
-    \"repeat_group_button\":0,
-    \"repeat_template\":\"repeatgroup\",
-    \"repeat_max\":\"\",
-    \"repeat_min\":\"\",
-    \"repeat_num_element\":\"\",
-    \"repeat_error_message\":\"\",
-    \"repeat_no_data_message\":\"\",
-    \"repeat_intro\":\"\",
-    \"repeat_add_access\":\"1\",
-    \"repeat_delete_access\":\"1\",
-    \"repeat_delete_access_user\":\"\",
-    \"repeat_copy_element_values\":\"0\",
-    \"group_columns\":\"1\",
-    \"group_column_widths\":\"\",
-    \"repeat_group_show_first\":1,
-    \"random\":\"0\",
-    \"labels_above\":\"-1\",
-    \"labels_above_details\":\"-1\"
-    }'
-    );
-    """
 
     # GET NEWLY CREATED GROUP NUMBER
     curs.execute(
