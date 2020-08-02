@@ -3,18 +3,28 @@
     <words>
       <w>addlabel</w>
       <w>addurl</w>
+      <w>createdate</w>
+      <w>createdby</w>
       <w>csvfullname</w>
+      <w>defaulttotoday</w>
       <w>detaillabel</w>
       <w>detailurl</w>
       <w>displaynum</w>
       <w>editlabel</w>
       <w>editurl</w>
       <w>fabrik</w>
+      <w>fieldname</w>
+      <w>findlike</w>
+      <w>groupid</w>
       <w>incfilters</w>
+      <w>internalid</w>
       <w>isview</w>
       <w>janse</w>
+      <w>jdate</w>
       <w>joomla</w>
       <w>jplugins</w>
+      <w>notempty</w>
+      <w>ordernumber</w>
       <w>outro</w>
       <w>prefilter</w>
       <w>prefilters</w>
@@ -23,6 +33,8 @@
       <w>rsslimit</w>
       <w>rsslimitmax</w>
       <w>showall</w>
+      <w>showmax</w>
+      <w>xxlarge</w>
     </words>
   </dictionary>
 </component>

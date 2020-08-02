@@ -42,6 +42,7 @@ def fabrik_element_create(b_input: bool = False,
     INPUT ELEMENT
     INTERNALID SETUP
     FIELD 50 NOTEMPTY SETUP
+    TEXTAREA 1024 SETUP
     JDATE CREATED SETUP    
     """
 
@@ -274,7 +275,7 @@ def fabrik_element_create(b_input: bool = False,
             'python',
             '0000-00-00 00:00:00',
             0,
-            50,
+            30,
             6,
             '',
             0,
@@ -315,6 +316,62 @@ def fabrik_element_create(b_input: bool = False,
                 func_file.write_log(
                     "%t INSERT ELEMENT FIELD: " + s_database_input + "." + s_table_input + ": " + s_label_input)
 
+        """********************************************************************
+        TEXTAREA 1024 SETUP
+        ********************************************************************"""
+
+        if s_type_input == "textarea_1024":
+
+            if func_configure.l_debug_project:
+                print("CREATE FIELD")
+
+            # INSERT GROUP RECORD
+            s_sql = s_sql_fields + """
+            '%FIELDNAME%',
+            %GROUPID%,
+            'textarea',
+            '%LABEL%',
+            0,
+            '0000-00-00 00:00:00',
+            NOW(),
+            %CREATEDBY%,
+            'python',
+            '0000-00-00 00:00:00',
+            0,
+            40,
+            6,
+            '',
+            0,
+            0,
+            %ORDERNUMBER%,
+            0,
+            NULL,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            '{
+            "bootstrap_class":"input-xxlarge",
+            "textarea-showmax":"1",
+            "textarea-maxlength":"1024",
+            "textarea_limit_type":"word"
+            }'
+            """ + ");"
+            # print(s_sql)  # DEBUG
+            s_sql = s_sql.replace("%FIELDNAME%", s_name_input)
+            s_sql = s_sql.replace("%GROUPID%", s_group_input)
+            s_sql = s_sql.replace("%LABEL%", s_label_input)
+            s_sql = s_sql.replace("%CREATEDBY%", s_created_by)
+            s_sql = s_sql.replace("%ORDERNUMBER%", s_order_input)
+            curs.execute(s_sql)
+            mysql_connection.commit()
+            if func_configure.l_log_project:
+                func_file.write_log(
+                    "%t INSERT ELEMENT FIELD: " + s_database_input + "." + s_table_input + ": " + s_label_input)
 
         """********************************************************************
         JDATE CREATED
@@ -371,8 +428,6 @@ def fabrik_element_create(b_input: bool = False,
                 func_file.write_log(
                     "%t INSERT ELEMENT JDATE CREATED: " + s_database_input + "." + s_table_input + ": " + s_label_input)
 
-
-
         # CLOSE LOOP
         if not b_loop or s_type_input == "99":
             l_loop = False
@@ -392,7 +447,7 @@ if __name__ == '__main__':
         # fabrik_element_create()
         # fabrik_element_create(False, False, "internalid", "92", "1", "ia_findlike_auto", "ID")
         # fabrik_element_create(False, False, "jdate_created", "92", "2", "ia_findlike_createdate", "Date created")
-        fabrik_element_create(False, False, "field_50_notempty", "93", "3", "ia_findlike_name", "Likelihood")
+        fabrik_element_create(False, False, "field_50_notempty", "92", "3", "ia_findlike_name", "Likelihood")
+        fabrik_element_create(False, False, "textarea_1024", "92", "4", "ia_findlike_desc", "Description")
     except Exception as e:
         func_system.error_message(e)
-
