@@ -47,7 +47,8 @@ def fabrik_element_create(b_input: bool = False,
     JDATE FROM TODAY NOTEMPTY SETUP 
     JDATE TO 2099 SETUP
     JDATE CREATED SETUP
-    JDATE MODIFIED SETUP    
+    JDATE MODIFIED SETUP
+    FIELD MODIFIED BY SETUP        
     """
 
     """*************************************************************************
@@ -317,8 +318,10 @@ def fabrik_element_create(b_input: bool = False,
             curs.execute(s_sql)
             mysql_connection.commit()
             if func_configure.l_log_project:
-                func_file.write_log(
-                    "%t INSERT ELEMENT FIELD 50 NOEMPTY: " + s_database_input + "." + s_table_input + ": " + s_label_input)
+                func_file.write_log("%t INSERT ELEMENT FIELD 50 NOEMPTY: " +
+                                    s_database_input + "." +
+                                    s_table_input + ": " +
+                                    s_label_input)
 
         """********************************************************************
         TEXTAREA 1024 SETUP
@@ -431,8 +434,10 @@ def fabrik_element_create(b_input: bool = False,
             curs.execute(s_sql)
             mysql_connection.commit()
             if func_configure.l_log_project:
-                func_file.write_log(
-                    "%t INSERT ELEMENT RADIOBUTTON 15: " + s_database_input + "." + s_table_input + ": " + s_label_input)
+                func_file.write_log("%t INSERT ELEMENT RADIOBUTTON 15: " +
+                                    s_database_input + "." +
+                                    s_table_input + ": " +
+                                    s_label_input)
 
         """********************************************************************
         RADIOBUTTON YESNO SETUP
@@ -489,7 +494,8 @@ def fabrik_element_create(b_input: bool = False,
             mysql_connection.commit()
             if func_configure.l_log_project:
                 func_file.write_log(
-                    "%t INSERT ELEMENT RADIOBUTTON YESNO: " + s_database_input + "." + s_table_input + ": " + s_label_input)
+                    "%t INSERT ELEMENT RADIOBUTTON YESNO: " + s_database_input + "." + s_table_input + ": " +
+                    s_label_input)
 
         """********************************************************************
         JDATE FROM TODAY NOTEMPTY SETUP
@@ -552,7 +558,8 @@ def fabrik_element_create(b_input: bool = False,
             mysql_connection.commit()
             if func_configure.l_log_project:
                 func_file.write_log(
-                    "%t INSERT ELEMENT JDATE FROM TODAY: " + s_database_input + "." + s_table_input + ": " + s_label_input)
+                    "%t INSERT ELEMENT JDATE FROM TODAY: " + s_database_input + "." + s_table_input + ": " +
+                    s_label_input)
 
         """********************************************************************
         JDATE TO 2099 SETUP
@@ -733,8 +740,65 @@ def fabrik_element_create(b_input: bool = False,
             curs.execute(s_sql)
             mysql_connection.commit()
             if func_configure.l_log_project:
-                func_file.write_log(
-                    "%t INSERT ELEMENT JDATE MODIFIED: " + s_database_input + "." + s_table_input + ": " + s_label_input)
+                func_file.write_log("%t INSERT ELEMENT JDATE MODIFIED: " +
+                                    s_database_input + "." +
+                                    s_table_input + ": " +
+                                    s_label_input)
+
+        """********************************************************************
+        FIELD MODIFIED BY SETUP
+        ********************************************************************"""
+
+        if s_type_input == "field_modified_by":
+
+            if func_configure.l_debug_project:
+                print("CREATE FIELD MODIFIED BY")
+
+            # INSERT GROUP RECORD
+            s_sql = s_sql_fields + """
+            '%FIELDNAME%',
+            %GROUPID%,
+            'field',
+            '%LABEL%',
+            0,
+            '0000-00-00 00:00:00',
+            NOW(),
+            %CREATEDBY%,
+            'python',
+            '0000-00-00 00:00:00',
+            0,
+            30,
+            6,
+            '',
+            0,
+            0,
+            %ORDERNUMBER%,
+            1,
+            NULL,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            '{
+            }'
+            """ + ");"
+            # print(s_sql)  # DEBUG
+            s_sql = s_sql.replace("%FIELDNAME%", s_name_input)
+            s_sql = s_sql.replace("%GROUPID%", s_group_input)
+            s_sql = s_sql.replace("%LABEL%", s_label_input)
+            s_sql = s_sql.replace("%CREATEDBY%", s_created_by)
+            s_sql = s_sql.replace("%ORDERNUMBER%", s_order_input)
+            curs.execute(s_sql)
+            mysql_connection.commit()
+            if func_configure.l_log_project:
+                func_file.write_log("%t INSERT ELEMENT FIELD MODIFIED BY: " +
+                                    s_database_input + "." +
+                                    s_table_input + ": " +
+                                    s_label_input)
 
         # CLOSE LOOP
         if not b_loop or s_type_input == "99":
@@ -761,6 +825,6 @@ if __name__ == '__main__':
         # fabrik_element_create(False, False, "jdate_from_today", "92", "6", "ia_findlike_from", "From date *")
         # fabrik_element_create(False, False, "jdate_to_2099", "92", "7", "ia_findlike_to", "To date *")
         # fabrik_element_create(False, False, "jdate_created", "92", "8", "ia_findlike_createdate", "Date created")
-        # fabrik_element_create(False, False, "jdate_modified", "92", "9", "ia_findlike_editdate", "Date modified")
+        fabrik_element_create(False, False, "jdate_modified", "92", "9", "ia_findlike_editdate", "Date modified")
     except Exception as e:
         func_system.error_message(e)

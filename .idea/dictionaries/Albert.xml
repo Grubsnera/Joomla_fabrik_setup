@@ -3,6 +3,8 @@
     <words>
       <w>addlabel</w>
       <w>addurl</w>
+      <w>alwaystoday</w>
+      <w>comparewith</w>
       <w>createdate</w>
       <w>createdby</w>
       <w>csvfullname</w>
@@ -10,19 +12,23 @@
       <w>detaillabel</w>
       <w>detailurl</w>
       <w>displaynum</w>
+      <w>editdate</w>
       <w>editlabel</w>
       <w>editurl</w>
       <w>fabrik</w>
       <w>fieldname</w>
       <w>findlike</w>
+      <w>greaterthan</w>
       <w>groupid</w>
       <w>incfilters</w>
       <w>internalid</w>
+      <w>isgreaterorlessthan</w>
       <w>isview</w>
       <w>janse</w>
       <w>jdate</w>
       <w>joomla</w>
       <w>jplugins</w>
+      <w>noempty</w>
       <w>notempty</w>
       <w>ordernumber</w>
       <w>outro</w>
