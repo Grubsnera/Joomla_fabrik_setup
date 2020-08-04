@@ -3,8 +3,10 @@
     <words>
       <w>addlabel</w>
       <w>addurl</w>
+      <w>albertjvr</w>
       <w>alwaystoday</w>
       <w>comparewith</w>
+      <w>createby</w>
       <w>createdate</w>
       <w>createdby</w>
       <w>csvfullname</w>
@@ -12,6 +14,7 @@
       <w>detaillabel</w>
       <w>detailurl</w>
       <w>displaynum</w>
+      <w>editby</w>
       <w>editdate</w>
       <w>editlabel</w>
       <w>editurl</w>
@@ -40,6 +43,7 @@
       <w>rsslimitmax</w>
       <w>showall</w>
       <w>showmax</w>
+      <w>studmaster</w>
       <w>xxlarge</w>
     </words>
   </dictionary>
