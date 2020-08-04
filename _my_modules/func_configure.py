@@ -6,10 +6,12 @@ Copyright (C) AB Janse van Rensburg on 20200717
 # CORRESPONDENCE VARIABLES
 s_name_project: str = 'IANWU'  # Name of the project.
 # s_name_project: str = 'STUDMASTER'  # Name of the project.
+s_path_project: str = 'O:/Pythondev/Joomla_fabrik_setup/'
 l_debug_project: bool = True  # Flag to display on screen print messages.
 l_log_project: bool = True  # Flag to save actions in log file.
 l_mail_project: bool = False  # Flag to indicate project sending emails.
 l_mess_project: bool = False  # Flag to indicate project sending text messages.
+
 
 # VARIABLES ONLY FOR THE JOOMLA FABRIK PROJECT
 if s_name_project == "STUDMASTER":
