@@ -7,9 +7,14 @@ Copyright (c) AB Janse van Rensburg 20200804
 from _my_modules import func_configure
 from _my_modules import func_file
 from _my_modules import func_mysql
+from _fabrik_element_modules import func_bootstrap_class
+from _fabrik_element_modules import func_buttongroup
+from _fabrik_element_modules import func_canorder
 from _fabrik_element_modules import func_hidden
 from _fabrik_element_modules import func_label
+from _fabrik_element_modules import func_optionsperrow
 from _fabrik_element_modules import func_showinlist
+from _fabrik_form_modules import func_goback_button
 
 # INDEX
 """
@@ -58,10 +63,14 @@ if l_finding_likelihood:
     # UPDATE FORM
     if func_configure.l_log_project:
         func_file.write_log('%t UPDATE FORM: Finding likelihood')
+    s_table = func_mysql.get_fabrik_table(False, 'form')
+    func_goback_button.update_goback_button(mysql_cxn, s_table, 'Finding Likelihood', '1')
 
     # UPDATE GROUP
     if func_configure.l_log_project:
         func_file.write_log('%t UPDATE GROUP: Finding likelihood')
+    s_table = func_mysql.get_fabrik_table(False, 'group')
+    func_label.update_label(mysql_cxn, s_table, 'Finding Likelihood', 'Add / Edit / View an audit likelihood rating')
 
     # UPDATE ELEMENTS
     if func_configure.l_log_project:
@@ -90,9 +99,26 @@ if l_finding_likelihood:
     func_hidden.update_hidden(mysql_cxn, s_table, 'ia_findlike_createdate', 1)
     func_hidden.update_hidden(mysql_cxn, s_table, 'ia_findlike_editdate', 1)
 
+    func_bootstrap_class.update_bootstrap_class(mysql_cxn, s_table, 'ia_findlike_name', 'input-xxlarge')
+    func_bootstrap_class.update_bootstrap_class(mysql_cxn, s_table, 'ia_findlike_desc', 'input-xxlarge')
+    func_bootstrap_class.update_bootstrap_class(mysql_cxn, s_table, 'ia_findlike_from', 'input-small')
+    func_bootstrap_class.update_bootstrap_class(mysql_cxn, s_table, 'ia_findlike_to', 'input-small')
+
+    func_optionsperrow.update_options_per_row(mysql_cxn, s_table, 'ia_findlike_value', '1')
+    func_optionsperrow.update_options_per_row(mysql_cxn, s_table, 'ia_findlike_active', '1')
+
+    func_buttongroup.update_button_group(mysql_cxn, s_table, 'ia_findlike_active', '1')
+
+    func_canorder.update_can_order(mysql_cxn, s_table, 'ia_findlike_name', '1')
+    func_canorder.update_can_order(mysql_cxn, s_table, 'ia_findlike_desc', '1')
+    func_canorder.update_can_order(mysql_cxn, s_table, 'ia_findlike_from', '1')
+
 """****************************************************************************
 END
 ****************************************************************************"""
+
+# CLOSE THE DATABASE CONNECTION
+mysql_cxn.close()
 
 # CLOSE THE LOG WRITER
 func_file.write_log("---------------------------")

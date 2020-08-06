@@ -65,7 +65,7 @@ def error_message(e,
 
     # WRITE ERROR TO LOG
     if func_configure.l_log_project:
-        func_file.write_log("%t ERROR: " + type(e).__name__)
-        func_file.write_log("%t ERROR: " + s_mess)
+        func_file.write_log("%t ERROR: " + type(e).__name__, func_configure.s_path_project + 'log/')
+        func_file.write_log("%t ERROR: " + s_mess, func_configure.s_path_project + 'log/')
 
     return

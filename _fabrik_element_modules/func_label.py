@@ -34,6 +34,7 @@ def update_label(mysql_cxn, s_table: str = '', s_name: str = '', s_label: str = 
     mysql_cur.execute('START TRANSACTION;')
     mysql_cur.execute(s_sql)
     mysql_cur.execute('COMMIT;')
+    mysql_cur.close()
 
     # UPDATE THE LOG
     b_return = True
