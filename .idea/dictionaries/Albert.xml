@@ -21,6 +21,7 @@
       <w>editurl</w>
       <w>fabrik</w>
       <w>fieldname</w>
+      <w>findcont</w>
       <w>findlike</w>
       <w>goback</w>
       <w>greaterthan</w>
@@ -46,6 +47,7 @@
       <w>showall</w>
       <w>showmax</w>
       <w>studmaster</w>
+      <w>xlarge</w>
       <w>xxlarge</w>
     </words>
   </dictionary>
